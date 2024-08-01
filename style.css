@@ -1,0 +1,41 @@
+/* Generale body styling*/
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Title styling*/
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Game area styling*/
+.game-area {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: #000;
+    border: 1px solid #333;
+}
+
+/* Snake styling*/
+.snake {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #0f0;
+}
+
+/* Food styling*/
+.food {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f00;
+}
