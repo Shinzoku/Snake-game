@@ -19,6 +19,7 @@ The project consists of three main files:
 + **Random Food Placement:** Food appears at random positions within the game area.
 + **Collision Detection:** The game detects collisions with the walls or the snake's own body, ending the game if a collision occurs.
 + **Game Over Alert:** An alert is displayed to notify the player when the game is over.
++ **Restart Game:** A button appears after the Game Over Alert which allows you to reset and restart the game.
 
 ## Cloning the Project
 
