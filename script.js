@@ -2,10 +2,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const gameArea = document.getElementById('gameArea'); // Get the game area element
     const gridSize = 20; // Size of each grid cell
     const gameSize = 400; // Size of the game area
-    const snake = [{x: 0, y: 0}]; // Initial position of the snake
-    let food = {x: 0, y: 0}; // Initial position of the food
-    let direction = {x: 1, y: 0}; // Initial direction of the snake
-    let gameInterval;
+    let snake, food, direction, gameInterval;
+
+    // function to reset the game
+    function initializeGame() {
+        snake = [{x: 0, y: 0}]; // Initial position of the snake
+        food = {x: 0, y: 0}; // Initial position of the food
+        direction = {x: 1, y: 0}; // Initial direction of the snake
+        placeFood();
+        draw();
+    }
 
     // Function to create a div element for the snake or food
     function createDiv(className, x, y) {
@@ -43,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Check for collisions with walls or itself
         if (head.x < 0 || head.x >= gameSize || head.y < 0 || head.y >= gameSize || snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)) {
             clearInterval(gameInterval); // Stop the game
-            alert('Game Over'); // Display game over message
+            alert('Vous avez perdu'); // Display game over message
+            restartButton.style.display = 'block'; // Display the restart button
             return;
         }
 
@@ -62,14 +69,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         } else if (key === 'ArrowLeft' && direction.x === 0) {
             direction = {x: -1, y: 0}; // Move left
-            
+
         } else if (key === 'ArrowRight' && direction.x === 0) {
             direction = {x: 1, y: 0}; // Move right
         }
     }
 
     document.addEventListener('keydown', changeDirection); // Listen for key presses to change direction
-    placeFood(); // Place the initial food
-    draw(); // Draw the initial game state
+    initializeGame(); // reset the game
     gameInterval = setInterval(move, 200); // Start the game loop
 });
+
+// Define the restartGame function globally
+function restartGame() {
+    const restartButton = document.getElementById('restartButton'); // Get the restart button element
+    restartButton.style.display = 'none'; // hide the restart button
+    document.dispatchEvent(new Event('DOMContentLoaded')); // DOMContentLoaded event is redispatched to reset the game
+}

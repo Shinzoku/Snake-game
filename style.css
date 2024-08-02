@@ -39,3 +39,11 @@ h1 {
     height: 20px;
     background-color: #f00;
 }
+
+/* Restart button styling*/
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
